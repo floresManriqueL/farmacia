@@ -320,7 +320,7 @@
                        } ?>
                             </div>
                             <div  class="user-info">
-                                <div><h4><?php $us=$_SESSION['nombre']; echo $us;?></h4></div>
+                                <div><h5><?php $us=$_SESSION['nombre']; echo $us;?></h5></div>
                                 <div class="user-text-online">
                                    <h5> <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;<?php $us=$_SESSION['tipo']; echo $us;?></h5>
                                 </div>
