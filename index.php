@@ -232,7 +232,7 @@ if($_SESSION['contador'] >= 5){
                   showConfirmButton: false,
                   timer: 3000
                   });";
-                    echo "location.href='docs/iniciomenu.php'";
+                    echo "location.href='docs/fm_perfil.php'";
                     echo "</script>";
                   }
                  // }else{
