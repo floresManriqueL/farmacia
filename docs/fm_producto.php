@@ -61,7 +61,7 @@ if (isset($objP)) {
              <div class="row">
                  <!-- page header -->
                 <div class="col-lg-12">
-                    <h1 class="page-header"><i class="fa fa-address-card" aria-hidden="true"></i> Agregar Nuevo Producto</h1>
+                    <h1 class="page-header"><i class="fa fa-address-card" aria-hidden="true"></i>  <?php if(isset($id)) echo "Editar Producto"; else echo "Agregar Nuevo Producto";?></h1>
                 </div>
                 <!--end page header -->
             </div>

@@ -31,19 +31,6 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a style="background-color: rgb(50,50,50);" class="user-section" href="iniciomenu.php">
-                    <?php
-                     require_once "../DAO/DAOEmpleado.php";
-                     $daoPx = new DAOEmpleado();
-                   //$id=base64_decode($_REQUEST['criterio']);
-                    $objPx = null;
-                   // echo $_SESSION['idempleado'];
-                    $objPx = $daoPx->consultaIndividual($_SESSION['idempleado']);
-                       if($objPx!=null){
-                        echo "<img style='width: auto; height: 80px;'' src='../imagenes/empleados/".$objPx->getImagen()."' alt='' ></img>";
-                       }else{
-                        echo "<img style='width: auto; height: 80px;'' src='../assets/img/user.jpg' alt='' ></img>";
-                       }
-                     ?>
                     <img src="../assets/img/logo2.png" alt="" ></img>
                 </a>
             </div>
@@ -317,13 +304,25 @@
                     <li>
                         <!-- user image section-->
                         <center><div class="form-group"><div style="background-color: rgb(100,100,100);" class="user-section">
-                            <!--<div class="user-section-inner">
-                                <img src="../assets/img/user.jpg" alt="">
-                            </div>-->
+                             <div class="user-section-inner">
+                           <?php  
+                            require_once "../DAO/DAOEmpleado.php";
+                     $daoPx = new DAOEmpleado();
+                   //$id=base64_decode($_REQUEST['criterio']);
+                    $objPx = null;
+                   // echo $_SESSION['idempleado'];
+                    $objPx = $daoPx->consultaIndividual($_SESSION['idempleado']); 
+
+                             if($objPx!=null){
+                        echo "<img style='width: 70px; height: auto;' src='../imagenes/empleados/".$objPx->getImagen()."' alt='' ></img>";
+                       }else{
+                        echo "<img style='width: 70px; height: auto;'' src='../assets/img/user.jpg' alt='' ></img>";
+                       } ?>
+                            </div>
                             <div  class="user-info">
-                                <div><?php $us=$_SESSION['nombre']; echo $us;?></div>
+                                <div><h4><?php $us=$_SESSION['nombre']; echo $us;?></h4></div>
                                 <div class="user-text-online">
-                                    <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;<?php $us=$_SESSION['tipo']; echo $us;?>
+                                   <h5> <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;<?php $us=$_SESSION['tipo']; echo $us;?></h5>
                                 </div>
                             </div>
 
