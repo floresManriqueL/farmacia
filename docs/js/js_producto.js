@@ -182,6 +182,7 @@ function men() {
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
   confirmButtonText: 'SI, Proceder',
+  cancelButtonText: 'Cancelar',
    closeOnConfirm:false
 });
 }
@@ -354,6 +355,7 @@ $("#porcentaje").keyup(function(e){
         confirmButtonColor: '#008F39',
         cancelButtonColor: '#3085d6',
         confirmButtonText: 'Si, proceder',
+        cancelButtonText: 'Cancelar',
        closeOnConfirm:false
        }
       ).then((result) => {
@@ -372,6 +374,7 @@ $("#porcentaje").keyup(function(e){
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Si, proceder',
+        cancelButtonText: 'Cancelar',
        closeOnConfirm:false
        }
       ).then((result) => {
@@ -394,6 +397,7 @@ function inactivar1(idw){
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Si, proceder',
+        cancelButtonText: 'Cancelar',
        closeOnConfirm:false
        }
       ).then((result) => {
