@@ -473,10 +473,10 @@ setInterval(actualizar,1000);
                         <a href="#"><i class="fa fa-male"></i> Gestionar Empleados<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="fempleado.php"><i class="icon fa fa-circle-o"></i> Agregar Empleados</a>
+                                <a href="fm_empleado.php"><i class="icon fa fa-circle-o"></i> Agregar Empleados</a>
                             </li>
                             <li>
-                                <a href="templeado.php"><i class="icon fa fa-circle-o"></i> Listar Empleados</a>
+                                <a href="tb_listaempleado.php"><i class="icon fa fa-circle-o"></i> Listar Empleados</a>
                             </li>
 
 
@@ -496,10 +496,10 @@ setInterval(actualizar,1000);
                         <a href="#"><i class="fa fa-user-circle-o"></i> Gestionar Cuenta<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#"><i class="icon fa fa-circle-o"></i> Agregar Cuenta</a>
+                                <a href="fm_usuario.php"><i class="icon fa fa-circle-o"></i> Agregar Cuenta</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon fa fa-circle-o"></i> Listar Cuenta</a>
+                                <a href="tb_listausuario.php"><i class="icon fa fa-circle-o"></i> Listar Cuenta</a>
                             </li>
                         </ul>
                         <!-- second-level-items -->
@@ -717,10 +717,10 @@ setInterval(actualizar,1000);
                         <a href="#"><i class="app-menu__icon fa fa-users"></i> Gestionar Cliente<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#"><i class="icon fa fa-circle-o"></i> Agregar Cliente</a>
+                                <a href="fm_cliente.php"><i class="icon fa fa-circle-o"></i> Agregar Cliente</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon fa fa-circle-o"></i> Listar Cliente</a>
+                                <a href="tb_listacliente.php"><i class="icon fa fa-circle-o"></i> Listar Cliente</a>
                             </li>
                         </ul>
                         <!-- second-level-items -->

@@ -392,7 +392,7 @@ var str = "";
         
     }else{
       console.log("validar_campo",$(this).data('quien_es'));
-      mostrar_mensaje("Espere","Validando "+$(this).data('quien_es'));
+      //mostrar_mensaje("Espere","Validando "+$(this).data('quien_es'));
       var datos = {"validar_campos":"si_por_campo","campo":$(this).val(),"tipo":$(this).data('quien_es')};
       var incampo = $(this).data('quien_es');
       console.log("datos: ",datos);

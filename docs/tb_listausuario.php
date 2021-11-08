@@ -9,7 +9,8 @@ error_reporting(0);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FARMACIA LA BENDICION</title>
     <!-- Core CSS - Include with every page -->
-     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo2.png">
+    <link href="../assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo2.png">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="../assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
@@ -19,16 +20,16 @@ error_reporting(0);
     <link href="../assets/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
 
      <link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css"/>
-     <script src="js/js_producto.js"></script>
+     <script src="js/js_usuario.js"></script>
       <script type="text/javascript">
         function mandarId1(id) {
-        location.href = "fm_producto.php?id=" + id;
+        location.href = "fm_usuario.php?id=" + id;
     }
        </script>
      <style type="text/css">
       .img_prod img{
         width: 70px;
-        height: auto;
+        height: 70px;
         margin: auto; 
       }
     </style>
@@ -47,7 +48,7 @@ error_reporting(0);
              <div class="row">
                  <!--  page header -->
                 <div class="col-lg-12">
-                    <h1 class="page-header"><i class="fa fa-th" aria-hidden="true"></i> Lista de Productos</h1>
+                    <h1 class="page-header"><i class="fa fa-th" aria-hidden="true"></i> Lista de Cuentas de Usuario.</h1>
                 </div>
                  <!-- end  page header -->
             </div>
@@ -60,7 +61,7 @@ error_reporting(0);
                     <div class="panel panel-default">
                         
                          <div  style="background-color: rgb(41, 60, 72);" class="panel-heading">
-                             <h5 style="color: rgb(255, 255, 255);"><i class="fa fa-table" aria-hidden="true"></i> Gestión de Producto</h5>
+                             <h5 style="color: rgb(255, 255, 255);"><i class="fa fa-table" aria-hidden="true"></i> Gestion de Cuentas.</h5>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -68,56 +69,42 @@ error_reporting(0);
                                     <thead>
                             <tr>
                                 <th>Corr</th>
-                                <th>Código</th>
                                 <th>Foto</th>
+                                <th>DUI</th>
                                 <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Tipo</th>
                                 <th>Estado</th>
-                                <th>Cantidad</th>
-                                <th>Categoría</th>
-                                <th>Marca</th>
                                 <th>Acciones</th>
 
                             </tr>
                         </thead>
                         <tbody>
                              <?php
-                    require_once "../DAO/DAOProducto.php";
-                    $daoE=new DAOProducto();
+                    require_once "../DAO/DAOUsuario.php";
+                    $daoE=new DAOUsuario();
                     $fila=$daoE->consultaAll();
                     $contador=1;
 
                     foreach ($fila as $key=> $value) {
-                       $img='../imagenes/uploads/'.$value->getFoto();
+                       $img='../imagenes/empleados/'.$value->getImagenEmpleado();
                       # code...
                       echo "<tr>";
                       echo "<td>".$contador."</td>";
-                      echo "<td>".$value->getCodigo()."</td>";
-                     echo "<td class='img_prod'> <img src='".$img."' alt='".$value->getNombre()."'></td>";
-                      echo "<td>".$value->getNombre()."</td>";
+                      echo "<td class='img_prod'> <img src='".$img."' alt='".$value->getNombreEmpleado()."'></td>";
+                      echo "<td>".$value->getDuiEmpleado()."</td>";
+                      echo "<td>".$value->getNombreEmpleado()." ".$value->getApellidoEmpleado()."</td>";
+                      echo "<td>".$value->getCorreoEmpleado()."</td>";
+                      echo "<td>".$value->getTipo()."</td>";
                        if($value->getEstado() == "Activo"){
                        echo "<td style='color: rgb(27,167,16);''>".$value->getEstado()."</td>";
                         }else{
                           echo "<td style='color: rgb(255, 0, 0);'>".$value->getEstado()."</td>";
                         }
-                         if($value->getCantidad() <= 10){
-                        echo "<td style='color: rgb(255, 0, 0);'>".$value->getCantidad()."</td>";
-                      }else{
-                        echo "<td>".$value->getCantidad()."</td>";
-                      }
-                         echo "<td>".$value->getNombreCategoria()."</td>";
-                          echo "<td>".$value->getNombreMarca()."</td>";
                           if($value->getEstado() == "Activo"){
-                             if($_SESSION['tipo']=='Administrador'){ 
-                                 echo "<td><CENTER><button type='button' class='btn btn-info' onclick=mandarId('".base64_encode($value->getIdProducto())."')><i class='fa fa-pencil'></i></button> <button type='button' class='btn btn-danger' onclick=showConfirmMessage('".$value->getIdProducto()."')><i class='fa fa-trash'></i>  </button>&nbsp;<button type='button' class='btn btn-outline btn-danger' onclick=inactivar1('".$value->getIdProducto()."')><i class='fa fa-dot-circle-o'></i></button> &nbsp;<button type='button' id='verpro' class='btn btn-success' data-toggle='modal' data-target='#ventana'  onclick=ver('".$value->getIdProducto()."')><i class='fa fa-eye' aria-hidden='true'></i></button></CENTER></td>";
-                               }else{
-                                echo "<td><CENTER><button type='button' id='verpro' class='btn btn-success' data-toggle='modal' data-target='#ventana'  onclick=ver('".$value->getIdProducto()."')><i class='fa fa-eye' aria-hidden='true'></i></button></CENTER></td>";
-                               }
+                                echo "<td><CENTER><button type='button' title='Eliminar' class='btn btn-danger' onclick=showConfirmMessage('".$value->getIdUsuario()."')><i class='fa fa-trash'></i></button>&nbsp;<button type='button' class='btn btn-outline btn-danger' title='Inactivar' onclick=inactivar1('".$value->getIdUsuario()."')><i class='fa fa-dot-circle-o'></i></button></CENTER></td>";
                           }else{
-                             if($_SESSION['tipo']=='Administrador'){
-                                 echo "<td><CENTER><button type='button' class='btn btn-info' onclick=mandarId('".base64_encode($value->getIdProducto())."')><i class='fa fa-pencil'></i></button> <button type='button' class='btn btn-danger' onclick=showConfirmMessage('".$value->getIdProducto()."')><i class='fa fa-trash'></i>  </button>&nbsp;<button type='button' class='btn btn-outline btn-primary' onclick=activar1('".$value->getIdProducto()."')><i class='fa fa-bullseye'></i></button> &nbsp;<button type='button' id='verpro' class='btn btn-success' data-toggle='modal' data-target='#ventana'  onclick=ver('".$value->getIdProducto()."')><i class='fa fa-eye' aria-hidden='true'></i></button></CENTER></td>";
-                               }else{
-                                 echo "<td><CENTER><button type='button' id='verpro' class='btn btn-success' data-toggle='modal' data-target='#ventana'  onclick=ver('".$value->getIdProducto()."')><i class='fa fa-eye' aria-hidden='true'></i></button></CENTER></td>";
-                               }
+                                echo "<td><CENTER><button type='button' title='Eliminar' class='btn btn-danger' onclick=showConfirmMessage('".$value->getIdUsuario()."')><i class='fa fa-trash'></i>  </button>&nbsp;<button type='button' class='btn btn-outline btn-primary' title='Activar' onclick=activar1('".$value->getIdUsuario()."')><i class='fa fa-bullseye'></i></button></button></CENTER></td>";
                           }
                           echo "</tr>";
                       $contador++;
@@ -127,11 +114,7 @@ error_reporting(0);
                                 </table>
                             </div>
                         </div>
-                        <?php if($_SESSION['tipo']=='Administrador'){ ?>
-                        <div style="background-color: rgb(41, 60, 72);" class="panel-footer">
-                          <button type='button' class='btn btn-success' onclick='redirec()'><i class="fa fa-plus-square" aria-hidden="true"></i> &nbsp; Agregar Nuevo Producto</button>        
-                            </div>
-                          <?php } ?>
+                       
                     </div>
         
 <div class="modal fade" id="ventana" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -139,7 +122,7 @@ error_reporting(0);
     <div class="modal-content">
       <div style="background-color: rgb(50, 50, 50);" class="modal-header">
         <button style="color: rgb(255, 255, 255);" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 style="color: rgb(255, 255, 255);" class="modal-title" id="myModalLabel"><i class="fa fa-list-ul" aria-hidden="true"></i> Características del Productos</h4>
+        <h4 style="color: rgb(255, 255, 255);" class="modal-title" id="myModalLabel"><i class="fa fa-list-ul" aria-hidden="true"></i> Caracteristicas del Productos</h4>
       </div>
       <div class="modal-body">
           <div class="panel-body">
@@ -206,57 +189,57 @@ error_reporting(0);
      $activr = "Activo";
      $activr1 = "Inactivo";
      if($bandera=="activ"){
-         require_once "../DAO/DAOProducto.php";
-        $daoE1=new DAOProducto();
+         require_once "../DAO/DAOUsuario.php";
+        $daoE1=new DAOUsuario();
         if ($daoE1->inactivar($baccion,$activr)==1) {
            echo "<script type='text/javascript'>"; 
          echo " Swal.fire({
-  title: 'SyS-Farmacia',
-  icon: 'success',
-  text: 'Registro Actualizado',
-  showConfirmButton: false,
-  timer: 2000
-});
-redi();";
-        echo "</script>";
-            # code...
-        } else {
-          echo "<script type='text/javascript'>"; 
-         echo " Swal.fire({
-  title: 'SyS-Farmacia',
-  icon: 'error',
-  text: 'Error al Actualizar',
-  showConfirmButton: false,
-  timer: 2000
-});";
+          title: 'SyS-Farmacia',
+          icon: 'success',
+          text: 'Registro Actualizado',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        redi();";
+                echo "</script>";
+                    # code...
+                } else {
+                  echo "<script type='text/javascript'>"; 
+                 echo " Swal.fire({
+          title: 'SyS-Farmacia',
+          icon: 'error',
+          text: 'Error al Actualizar',
+          showConfirmButton: false,
+          timer: 2000
+        });";
         echo "</script>";
             # code...
         }
      }
      if($bandera=="inacti"){
-      require_once "../DAO/DAOProducto.php";
-        $daoE2=new DAOProducto();
+      require_once "../DAO/DAOUsuario.php";
+        $daoE2=new DAOUsuario();
         if ($daoE2->inactivar($baccion,$activr1)==1) {
            echo "<script type='text/javascript'>"; 
          echo " Swal.fire({
-  title: 'SyS-Farmacia',
-  icon: 'success',
-  text: 'Registro Actualizado',
-  showConfirmButton: false,
-  timer: 2000
-});
-redi();";
-        echo "</script>";
-            # code...
-        } else {
-          echo "<script type='text/javascript'>"; 
-         echo " Swal.fire({
-  title: 'SyS-Farmacia',
-  icon: 'error',
-  text: 'Error al Actualizar',
-  showConfirmButton: false,
-  timer: 2000
-});";
+          title: 'SyS-Farmacia',
+          icon: 'success',
+          text: 'Registro Actualizado',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        redi();";
+                echo "</script>";
+                    # code...
+                } else {
+                  echo "<script type='text/javascript'>"; 
+                 echo " Swal.fire({
+          title: 'SyS-Farmacia',
+          icon: 'error',
+          text: 'Error al Actualizar',
+          showConfirmButton: false,
+          timer: 2000
+        });";
         echo "</script>";
             # code...
         }
@@ -264,29 +247,29 @@ redi();";
 
     if ($bandera=="delete") {
         # code...
-        require_once "../DAO/DAOProducto.php";
-        $daoE=new DAOProducto();
+        require_once "../DAO/DAOUsuario.php";
+        $daoE=new DAOUsuario();
         if ($daoE->eliminar($baccion)==1) {
            echo "<script type='text/javascript'>"; 
          echo " Swal.fire({
-  title: 'SyS-Farmacia',
-  icon: 'success',
-  text: 'Registro Eliminado (- o)',
-  showConfirmButton: false,
-  timer: 2000
-});
-redi();";
-        echo "</script>";
-            # code...
-        } else {
-          echo "<script type='text/javascript'>"; 
-         echo " Swal.fire({
-  title: 'SyS-Farmacia',
-  icon: 'error',
-  text: 'Error al eliminar los datos',
-  showConfirmButton: false,
-  timer: 2000
-});";
+          title: 'SyS-Farmacia',
+          icon: 'success',
+          text: 'Registro Eliminado (- o)',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        redi();";
+                echo "</script>";
+                    # code...
+                } else {
+                  echo "<script type='text/javascript'>"; 
+                 echo " Swal.fire({
+          title: 'SyS-Farmacia',
+          icon: 'error',
+          text: 'Error al eliminar los datos',
+          showConfirmButton: false,
+          timer: 2000
+        });";
         echo "</script>";
             # code...
         }

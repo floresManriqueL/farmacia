@@ -16,13 +16,14 @@
 		private $fechanaci;
 		private $correo;
 		private $telefono;
+		private $estado;
 		private $idfarmacia;
 		private $idcargo;
 
 		private $nombreCargo;
 		private $codigoCargo;
 		
-		function __construct($idempleado,$imagen,$nombre,$apellido,$estado_civil,$nit,$dui,$salario,$direccion,$genero,$fechanaci,$correo,$telefono,$idfarmacia,$idcargo){
+		function __construct($idempleado,$imagen,$nombre,$apellido,$estado_civil,$nit,$dui,$salario,$direccion,$genero,$fechanaci,$correo,$telefono,$estado,$idfarmacia,$idcargo){
 			# code...
 			$this->idempleado=$idempleado;
 			$this->imagen=$imagen;
@@ -37,6 +38,7 @@
 			$this->fechanaci=$fechanaci;
 			$this->correo=$correo;
 			$this->telefono=$telefono;
+			$this->estado=$estado;
 			$this->idfarmacia=$idfarmacia;
 			$this->idcargo=$idcargo;
 		}
@@ -79,6 +81,9 @@
 		}
 		function getTelefono(){
 			return $this->telefono;
+		}
+		function getEstado(){
+			return $this->estado;
 		}
 		function getIdFarmacia(){
 			return $this->idfarmacia;

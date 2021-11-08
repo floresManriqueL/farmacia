@@ -17,8 +17,16 @@
     		$this->Conexion_ID=$this->Conexion_ID->getConexion();
 		}
 
+        function consultaAllSinUsario(){
+            return $this->consulta("SELECT  a.idempleado AS idempleado, a.imagen AS imagen, a.nombre AS nombre, a.apellido AS apellido, a.estado_civil AS estado_civil, a.nit AS nit, a.dui AS dui, a.salario AS salario, a.direccion AS direccion, a.genero AS genero, a.fecha_naci AS fecha_naci, a.correo AS correo, a.telefono AS telefono, a.estado AS estado, a.idfarmacia AS idfarmacia, a.idcargo AS idcargo, b.nombre AS cargo FROM empleado AS a INNER JOIN cargo AS b ON a.idcargo = b.idcargo WHERE NOT EXISTS (SELECT * FROM usuario AS b where a.idempleado=b.idempleado) AND a.estado='Activo'");
+        }
+
+        function consultaAllConUsuario(){
+            return $this->consulta("SELECT  a.idempleado AS idempleado, a.imagen AS imagen, a.nombre AS nombre, a.apellido AS apellido, a.estado_civil AS estado_civil, a.nit AS nit, a.dui AS dui, a.salario AS salario, a.direccion AS direccion, a.genero AS genero, a.fecha_naci AS fecha_naci, a.correo AS correo, a.telefono AS telefono, a.estado AS estado, a.idfarmacia AS idfarmacia, a.idcargo AS idcargo, b.nombre AS cargo FROM empleado AS a INNER JOIN cargo AS b ON a.idcargo = b.idcargo WHERE EXISTS (SELECT * FROM usuario AS b where a.idempleado=b.idempleado) AND a.estado='Activo'");
+        }
+
         function consultaAll(){
-            return $this->consulta("SELECT a.idempleado AS idempleado, a.imagen AS imagen, a.nombre AS nombre, a.apellido AS apellido, a.estado_civil AS estado_civil, a.nit AS nit, a.dui AS dui, a.salario AS salario, a.direccion AS direccion, a.genero AS genero, a.fecha_naci AS fecha_naci, a.correo AS correo, a.telefono AS telefono, a.idfarmacia AS idfarmacia, a.idcargo AS idcargo, b.nombre AS cargo FROM empleado AS a INNER JOIN cargo AS b ON a.idcargo = b.idcargo");
+            return $this->consulta("SELECT a.idempleado AS idempleado, a.imagen AS imagen, a.nombre AS nombre, a.apellido AS apellido, a.estado_civil AS estado_civil, a.nit AS nit, a.dui AS dui, a.salario AS salario, a.direccion AS direccion, a.genero AS genero, a.fecha_naci AS fecha_naci, a.correo AS correo, a.telefono AS telefono, a.estado AS estado, a.idfarmacia AS idfarmacia, a.idcargo AS idcargo, b.nombre AS cargo FROM empleado AS a INNER JOIN cargo AS b ON a.idcargo = b.idcargo where a.estado='Activo'");
         }
 
 		function consulta($sql=""){
@@ -35,7 +43,7 @@
             	# code...
             	while ($fila=$result->fetch_object()) {
                		# code...
-                	$claseempe=new ClaseEmpleado($fila->idempleado,$fila->imagen,$fila->nombre,$fila->apellido,$fila->estado_civil,$fila->nit,$fila->dui,$fila->salario,$fila->direccion,$fila->genero,$fila->fecha_naci,$fila->correo,$fila->telefono,$fila->idfarmacia,$fila->idcargo);
+                	$claseempe=new ClaseEmpleado($fila->idempleado,$fila->imagen,$fila->nombre,$fila->apellido,$fila->estado_civil,$fila->nit,$fila->dui,$fila->salario,$fila->direccion,$fila->genero,$fila->fecha_naci,$fila->correo,$fila->telefono,$fila->estado,$fila->idfarmacia,$fila->idcargo);
                     $claseempe->setNombreCargo($fila->cargo);
                     $listaemple[]=$claseempe;
             	}
@@ -57,7 +65,7 @@
        		}
         	$this->Conexion_ID->autocommit(false);
         	$result=$this->Conexion_ID->query("insert into empleado 
-        	values ('".$obj->getIdEmpleado()."','".$obj->getImagen()."','".$obj->getNombre()."','".$obj->getApellido()."','".$obj->getEstadoCivil()."','".$obj->getNit()."','".$obj->getDui()."','".$obj->getSalario()."','".$obj->getDireccion()."','".$obj->getGenero()."','".$obj->getFechaNaci()."','".$obj->getCorreo()."','".$obj->getTelefono()."','".$obj->getIdFarmacia()."','".$obj->getIdCargo()."')");
+        	values ('".$obj->getIdEmpleado()."','".$obj->getImagen()."','".$obj->getNombre()."','".$obj->getApellido()."','".$obj->getEstadoCivil()."','".$obj->getNit()."','".$obj->getDui()."','".$obj->getSalario()."','".$obj->getDireccion()."','".$obj->getGenero()."','".$obj->getFechaNaci()."','".$obj->getCorreo()."','".$obj->getTelefono()."','".$obj->getEstado()."','".$obj->getIdFarmacia()."','".$obj->getIdCargo()."')");
 
         	if (!$result) {
             	# code...
@@ -94,7 +102,7 @@
 
         function eliminar($id){
             $this->Conexion_ID->autocommit(false);
-            $result=$this->Conexion_ID->query(" delete from empleado where idempleado='".$id."'");
+            $result=$this->Conexion_ID->query("update empleado set estado='Inactivo' where idempleado='".$id."'");
 
             if (!$result) {
                 # code...
@@ -115,7 +123,7 @@
             	return 0;
         	}
 
-       		$result=$this->Conexion_ID->query("SELECT a.idempleado AS idempleado, a.imagen AS imagen, a.nombre AS nombre, a.apellido AS apellido, a.estado_civil AS estado_civil, a.nit AS nit, a.dui AS dui, a.salario AS salario, a.direccion AS direccion, a.genero AS genero, a.fecha_naci AS fecha_naci, a.correo AS correo, a.telefono AS telefono, a.idfarmacia AS idfarmacia, a.idcargo AS idcargo, b.nombre AS cargo, b.idcargo AS idcargo FROM empleado AS a INNER JOIN cargo AS b ON a.idcargo = b.idcargo where idempleado='$id'");
+       		$result=$this->Conexion_ID->query("SELECT a.idempleado AS idempleado, a.imagen AS imagen, a.nombre AS nombre, a.apellido AS apellido, a.estado_civil AS estado_civil, a.nit AS nit, a.dui AS dui, a.salario AS salario, a.direccion AS direccion, a.genero AS genero, a.fecha_naci AS fecha_naci, a.correo AS correo, a.telefono AS telefono, a.estado AS estado, a.idfarmacia AS idfarmacia, a.idcargo AS idcargo, b.nombre AS cargo, b.idcargo AS idcargo FROM empleado AS a INNER JOIN cargo AS b ON a.idcargo = b.idcargo where idempleado='$id'");
 
         	$ObjE=null;
 
@@ -123,7 +131,7 @@
             	# code...
             	while ($fila=$result->fetch_object()) {
                 	# code...
-                	$ObjE=new ClaseEmpleado($fila->idempleado,$fila->imagen,$fila->nombre,$fila->apellido,$fila->estado_civil,$fila->nit,$fila->dui,$fila->salario,$fila->direccion,$fila->genero,$fila->fecha_naci,$fila->correo,$fila->telefono,$fila->idfarmacia,$fila->idcargo);
+                	$ObjE=new ClaseEmpleado($fila->idempleado,$fila->imagen,$fila->nombre,$fila->apellido,$fila->estado_civil,$fila->nit,$fila->dui,$fila->salario,$fila->direccion,$fila->genero,$fila->fecha_naci,$fila->correo,$fila->telefono,$fila->estado,$fila->idfarmacia,$fila->idcargo);
                     $ObjE->setNombreCargo($fila->cargo);
             	}
         	}
