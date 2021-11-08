@@ -94,19 +94,20 @@
 
                                         <div class="col-md-8">
                                            <br>
-                                            <label id="tel"><i class="fa fa-minus-square" aria-hidden="true"></i>Teléfono</label>
+                                            <label id="tel"><i class="fa fa-phone" hidden="true"></i>Teléfono</label>
 
                                             <input  class="form-control validar_campos_unicos"
                                             required   data-parsley-error-message="Campo requerido" autocomplete="off" type="text" id="telefono" name="telefono" value="<?php if(isset($objP)) echo $objP->getTelefono(); ?>"  placeholder="0000-0000" 
                                             data-quien_es="telefono">
                                         </div>
                                                 
-                                         <div class="col-md-10">
+                                         <div class="col-md-5">
                                            <br>
-                                            <label id="dirr"><i class="fa fa-minus-square" aria-hidden="true"></i>Dirección</label>
-
-                                            <input  minlength="0" maxlength="98"  class="form-control"
-                                            required   data-parsley-error-message="Campo requerido" autocomplete="off" type="text" id="direccion" name="direccion" value="<?php if(isset($objP)) echo $objP->getDireccion(); ?>"  placeholder="Direccion" onkeypress="return soloLetras(event)">
+                                          <div class="form-group">
+                                            <label id="dirr"><i class="fa fa-align-center" aria-hidden="true"></i> Dirección</label>
+                                            <textarea minlength="0" maxlength="98" class="form-control" name="direccion" id="direccion" rows="6" autocomplete="off"><?php if(isset($objP)) echo $objP->getDireccion(); ?></textarea>
+                                           <!-- <p class="help-block">Example block-level help text here.</p>-->
+                                        </div>   
                                         </div>
 
                             </div>
@@ -203,7 +204,7 @@
   icon: 'success',
   text: 'Datos almacenados',
   showConfirmButton: false,
-  timer: 4000
+  timer: 1000
 });
 redi();";
         echo "</script>";
@@ -215,7 +216,7 @@ redi();";
   icon: 'error',
   text: 'Error de guardado!',
   showConfirmButton: false,
-  timer: 4000
+  timer: 1000
 });";
         echo "</script>";
         }

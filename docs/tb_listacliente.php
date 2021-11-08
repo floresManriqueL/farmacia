@@ -171,11 +171,11 @@ redi();";
         } else {
           echo "<script type='text/javascript'>"; 
          echo " Swal.fire({
-  title: 'SyS-Farmacia',
+  title: 'NO SE PUEDE ELIMINAR',
   icon: 'error',
-  text: 'Error al eliminar los datos',
+  text: 'Datos utilizados en registro venta',
   showConfirmButton: false,
-  timer: 2000
+  timer: 4000
 });";
         echo "</script>";
             # code...
