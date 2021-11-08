@@ -461,10 +461,10 @@ setInterval(actualizar,1000);
                         <a href="#"><i class="app-menu__icon fa fa-users"></i> Gestionar Cliente<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#"><i class="icon fa fa-circle-o"></i> Agregar Cliente</a>
+                                <a href="fm_cliente.php"><i class="icon fa fa-circle-o"></i> Agregar Cliente</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon fa fa-circle-o"></i> Listar Cliente</a>
+                                <a href="tb_listacliente.php"><i class="icon fa fa-circle-o"></i> Listar Cliente</a>
                             </li>
                         </ul>
                         <!-- second-level-items -->
@@ -478,6 +478,17 @@ setInterval(actualizar,1000);
                             <li>
                                 <a href="templeado.php"><i class="icon fa fa-circle-o"></i> Listar Empleados</a>
                             </li>
+
+
+
+  <li>
+                                <a href="fm_cargo.php"><i class="icon fa fa-circle-o"></i> Agregar Cargo</a>
+                            </li>
+                            <li>
+                                <a href="tb_listacargo.php"><i class="icon fa fa-circle-o"></i> Listar Cargos</a>
+                            </li>
+
+
                         </ul>
                         <!-- second-level-items -->
                     </li>

@@ -419,19 +419,6 @@
                     </li>
 
 
-    <li>
-                        <a href="#"><i class="app-menu__icon fa fa-users"></i> Gestionar Cargo<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="fm_cargo.php"><i class="icon fa fa-circle-o"></i> Agregar Cargo</a>
-                            </li>
-                            <li>
-                                <a href="tb_listacargo.php"><i class="icon fa fa-circle-o"></i> Listar Cargos</a>
-                            </li>
-                        </ul>
-                        <!-- second-level-items -->
-                    </li>
-
                     <li>
                         <a href="#"><i class="fa fa-male"></i> Gestionar Empleados<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -440,6 +427,12 @@
                             </li>
                             <li>
                                 <a href="templeado.php"><i class="icon fa fa-circle-o"></i> Listar Empleados</a>
+                            </li>
+                              <li>
+                                <a href="fm_cargo.php"><i class="icon fa fa-circle-o"></i> Agregar Cargo</a>
+                            </li>
+                            <li>
+                                <a href="tb_listacargo.php"><i class="icon fa fa-circle-o"></i> Listar Cargos</a>
                             </li>
                         </ul>
                         <!-- second-level-items -->
