@@ -3,8 +3,8 @@
 
     if (isset($_REQUEST['id'])) {/* comprobamos si la variable que viene en la url si existe */
         # code...
-        require ("../DAO/DAOCategoria.php");
-        $daoP=new DAOCategoria();
+        require ("../DAO/DAOCargo.php");
+        $daoP=new DAOCargo();
         $id=base64_decode($_REQUEST['id']);/* desencriptamos el id recibido en la url */
         $objP=null;
         $objP=$daoP->consultaIndividual($id);
@@ -17,7 +17,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FARMACIA LA BENDICION</title>
+    <title>FARMACIA LA BENDICIÓN</title>
     <!-- Core CSS - Include with every page -->
     <link href="../assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -35,7 +35,7 @@
     <script type="text/javascript" src="../jquery/sweetalert.min.js"></script>
     <script src="../jquery/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="../jquery/jquery.maskedinput.min.js" type="text/javascript"></script>
-    <script src="js/js_categoria.js"></script>
+    <script src="js/js_cargo.js"></script>
        <script type="text/javascript">
        </script>
 
@@ -51,27 +51,27 @@
       <div class="row">
                  <!-- page header -->
                 <div class="col-lg-12">
-                    <h1 class="page-header"><i class="fa fa-address-card" aria-hidden="true"></i> Agregar Nueva Categoria</h1>
+                    <h1 class="page-header"><i class="fa fa-address-card" aria-hidden="true"></i> AGREGAR NUEVO CARGO</h1>
                 </div>
                 <!--end page header -->
             </div>
             <form action="" method="post" class="form-group " id="simi" name="simi">
         <input type="hidden" name="bandera" id="bandera">
-        <input type="hidden" name="baccion" id="baccion" value="<?php if(isset($objP)) echo $objP->getIdCategoria(); ?>">
+        <input type="hidden" name="baccion" id="baccion" value="<?php if(isset($objP)) echo $objP->getIdCargo(); ?>">
         <div class="row">
                 <div class="col-lg-12">
                    <div class="panel panel-default">
                        <div style="background-color: rgb(41, 60, 72);" class="panel-heading">
-                           <h5 style="color: rgb(255, 255, 255);"><i class="fa fa-address-book-o" aria-hidden="true"></i> Gestion de Categoria</h5>
+                           <h5 style="color: rgb(255, 255, 255);"><i class="fa fa-address-book-o" aria-hidden="true"></i> Gestión De Cargo</h5>
                         </div>
                           <div class="panel-body">
                             <div class="row">
                                   <div class="form-group">
                                              <div class="col-md-8">
-                                                 <label id="cod"><i class="fa fa-minus-square" aria-hidden="true"></i> Codigo</label>
+                                                 <label id="cod"><i class="fa fa-minus-square" aria-hidden="true"></i> Código</label>
                                             <input class="form-control" 
                                             data-parsley-error-message="Campo requerido"
-                                            required  type="text" id="codigo" name="codigo" value="<?php if(isset($objP)) echo $objP->getCodigo(); ?>" placeholder="Codigo Generico" disabled>
+                                            required  type="text" id="codigo" name="codigo" value="<?php if(isset($objP)) echo $objP->getCodigo(); ?>" placeholder="Código Genérico" disabled>
                                         </div>
                                          <button class="btn btn-info" type="button" id="bgene"  onclick="generar()" disabled="disabled">Generar</button>
                                     </div>
@@ -80,7 +80,7 @@
                                             <label id="nom"><i class="fa fa-minus-square" aria-hidden="true"></i> Nombre</label>
 
                                             <input   class="form-control"
-                                            required   data-parsley-error-message="Campo requerido" autocomplete="off" type="text" id="nombre" name="nombre" value="<?php if(isset($objP)) echo $objP->getNombre(); ?>"  placeholder="Nombre Categoria" onkeypress="return soloLetras(event)">
+                                            required   data-parsley-error-message="Campo requerido" autocomplete="off" type="text" id="nombre" name="nombre" value="<?php if(isset($objP)) echo $objP->getNombre(); ?>"  placeholder="Nombre Completo" onkeypress="return soloLetras(event)">
                                         </div>
                             </div>
                           </div>
@@ -99,7 +99,7 @@
                 <!-- Welcome -->
                 <div class="col-lg-12">
                     <div class="alert alert-info">
-                      <center>  <i class="fa fa-folder-open"></i><b> Copyright  © </b>2021 <b>&nbsp;FARMACIA LA BENDICION </b>
+                      <center>  <i class="fa fa-folder-open"></i><b> Copyright  © </b>2021 <b>&nbsp;FARMACIA LA BENDICIÓN </b>
         <b>&nbsp; </b> Reservados todos los derechos.</center>
                     </div>
                 </div>
@@ -164,9 +164,9 @@
   
 
     if($bandera=="add"){
-        require_once "../DAO/DAOCategoria.php";  
-        $daoP=new DAOCategoria();
-        if ($daoP-> insertar(new ClaseCategoria(null,$codigo,trim($nombre)))==1) {  
+        require_once "../DAO/DAOCargo.php";  
+        $daoP=new DAOCargo();
+        if ($daoP-> insertar(new ClaseCargo(null,$codigo,trim($nombre)))==1) {  
         echo "<script type='text/javascript'>"; 
          echo " Swal.fire({
   title: 'SyS-Farmacia',
@@ -193,9 +193,9 @@ redi();";
          echo "<script type='text/javascript'>"; 
          echo "men();";
         echo "</script>"; 
-        require_once "../DAO/DAOCategoria.php"; 
-        $daoP=new DAOCategoria();
-        if ($daoP->actualizar(new ClaseCategoria($baccion,$codigo,$nombre))==1) {
+        require_once "../DAO/DAOCargo.php"; 
+        $daoP=new DAOCargo();
+        if ($daoP->actualizar(new ClaseCargo($baccion,$codigo,trim($nombre)))==1) {
             # code...
             echo "<script type='text/javascript'>"; 
          echo " Swal.fire({

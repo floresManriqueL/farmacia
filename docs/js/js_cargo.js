@@ -1,7 +1,7 @@
   function limpiar(){
         $('#nombre').val('');
         $('#codigo').val('');
-        location.href="fm_categoria.php";
+        location.href="fm_cargo.php";
     }
 
 
@@ -96,7 +96,7 @@ function men() {
 });
 }
 function redi(){
-     location.href="tb_listacategoria.php";
+     location.href="tb_listacargo.php";
 }
 
   $(document).ready(function(){
@@ -217,7 +217,7 @@ console.log(efectivo);
     });
 
      function mandarId(id) {
-        location.href = "fm_categoria.php?id=" + id;
+        location.href = "fm_cargo.php?id=" + id;
     }
 
     function showConfirmMessage(id) {
@@ -240,7 +240,7 @@ console.log(efectivo);
 });
    } 
    function redi(){
-     location.href="tb_listacategoria.php";
+     location.href="tb_listacargo.php";
 }
 
 

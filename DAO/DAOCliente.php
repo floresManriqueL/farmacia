@@ -1,10 +1,10 @@
 <?php 
 	require_once ("../conexion/DB_mysql.php");
-	require_once ("../clases/ClaseCargo.php");
+	require_once ("../clases/ClaseCliente.php");
 	/**
 	 * 
 	 */
-	class DAOCargo{
+	class DAOCliente{
 
 		var $Conexion_ID;
     	var $Errno=0;
@@ -17,7 +17,7 @@
 		}
 
 		function consultaAll(){
-            return $this->consulta("select * from cargo");
+            return $this->consulta("select * from cliente");
         }
 
 		function consulta($sql=""){
@@ -28,13 +28,13 @@
         	}
 
         	$result=$this->Conexion_ID->query($sql);
-        	$listacargo=array();
+        	$listacliente=array();
 
         	if ($result) {
             	# code...
             	while ($fila=$result->fetch_object()) {
                		# code...
-                	$listacargo[]=new ClaseCargo($fila->idcargo,$fila->codigo,$fila->nombre);
+                	$listacliente[]=new ClaseCliente($fila->idcliente,$fila->nombre,$fila->apellido,$fila->telefono,$fila->direccion);
             	}
         	}
         	if (!$result) {
@@ -43,18 +43,18 @@
             	$this->Error=mysqli_connect_error();
         	}
 
-        	return $listacargo;
+        	return $listacliente;
    		}
 
-   		function insertar(ClaseCargo $obj){
-        	if (!($obj instanceof ClaseCargo)) {
+   		function insertar(ClaseCliente $obj){
+        	if (!($obj instanceof ClaseCliente)) {
            		# code...
             	$this->Error="Error de instaciado";
             	return 0;
        		}
         	$this->Conexion_ID->autocommit(false);
-        	$result=$this->Conexion_ID->query("insert into cargo 
-        	values ('".$obj->getIdCargo()."','".$obj->getCodigo()."','".$obj->getNombre()."')");
+        	$result=$this->Conexion_ID->query("insert into cliente 
+        	values ('".$obj->getIdCliente()."','".$obj->getNombre()."','".$obj->getApellido()."','".$obj->getTelefono()."','".$obj->getDireccion()."')");
 
         	if (!$result) {
             	# code...
@@ -68,14 +68,16 @@
         	}
     	}
 
-    	function actualizar(ClaseCargo $obj){
-            if (!($obj instanceof ClaseCargo)) {
+    	function actualizar(ClaseCliente $obj){
+            if (!($obj instanceof ClaseCliente)) {
                 # code...
                 $this->Error="Error de instaciado";
                 return 0;
             }
             $this->Conexion_ID->autocommit(false);
-            $result=$this->Conexion_ID->query("update cargo set codigo='".$obj->getCodigo()."', nombre='".$obj->getNombre()."' where idcargo='".$obj->getIdCargo()."'");
+            $result=$this->Conexion_ID->query("update cliente set nombre='".$obj->getNombre()."', apellido='".$obj->getApellido()."'
+            , telefono='".$obj->getTelefono()."'
+            , direccion='".$obj->getDireccion()."' where idcliente='".$obj->getIdCliente()."'");
 
             if (!$result) {
                 # code...
@@ -91,7 +93,7 @@
 
         function eliminar($id){
             $this->Conexion_ID->autocommit(false);
-            $result=$this->Conexion_ID->query(" delete from cargo where idcargo='".$id."'");
+            $result=$this->Conexion_ID->query(" delete from cliente where idcliente='".$id."'");
 
             if (!$result) {
                 # code...
@@ -112,7 +114,7 @@
             	return 0;
         	}
 
-       		$result=$this->Conexion_ID->query("SELECT * FROM cargo where idcargo='$id'");
+       		$result=$this->Conexion_ID->query("SELECT * FROM cliente where idcliente='$id'");
 
         	$ObjE=null;
 
@@ -120,7 +122,8 @@
             	# code...
             	while ($fila=$result->fetch_object()) {
                 	# code...
-                	$ObjE=new ClaseCargo($fila->idcargo,$fila->codigo,$fila->nombre);
+                	$ObjE=new ClaseCliente($fila->idcliente,$fila->nombre,$fila->apellido
+                    ,$fila->telefono,$fila->direccion);
             	}
         	}
         	///////////////////////////

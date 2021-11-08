@@ -16,7 +16,7 @@
     <link href="../assets/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
 
      <link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css"/>
-     <script src="js/js_categoria.js"></script>
+     <script src="js/js_cargo.js"></script>
       <script language="javascript">
 
   
@@ -37,7 +37,7 @@
             <div class="row">
                  <!--  page header -->
                 <div class="col-lg-12">
-                    <h1 class="page-header"><i class="fa fa-th" aria-hidden="true"></i> Lista de Categorias</h1>
+                    <h1 class="page-header"><i class="fa fa-th" aria-hidden="true"></i> LISTA DE CARGOS</h1>
                 </div>
                  <!-- end  page header -->
             </div>
@@ -46,7 +46,7 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div  style="background-color: rgb(41, 60, 72);" class="panel-heading">
-                             <h5 style="color: rgb(255, 255, 255);"><i class="fa fa-table" aria-hidden="true"></i> Gestion de Categorias</h5>
+                             <h5 style="color: rgb(255, 255, 255);"><i class="fa fa-table" aria-hidden="true"></i> Gestión De Cargos</h5>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -57,7 +57,7 @@
                                     <thead>
                             <tr>
                                  <th>Corr</th>
-                                <th>Codigo</th>
+                                <th>Código</th>
                                  <th>Nombre</th>
                                 <th>Acciones</th>
 
@@ -65,8 +65,8 @@
                         </thead>
                         <tbody>
                              <?php
-                    include "../DAO/DAOCategoria.php";
-                    $daoE=new DAOCategoria();
+                    include "../DAO/DAOCargo.php";
+                    $daoE=new DAOCargo();
                     $fila=$daoE->consultaAll();
                     $contador=1;
 
@@ -76,7 +76,7 @@
                       echo "<td>".$contador."</td>";
                       echo "<td>".$value->getCodigo()."</td>";
                       echo "<td>".$value->getNombre()."</td>";
-                      echo "<td><button type='button' class='btn btn-info' onclick=mandarId('".base64_encode($value->getIdCategoria())."')><i class='fa fa-pencil'></i></button> <button type='button' class='btn btn-danger' onclick=showConfirmMessage('".$value->getIdCategoria()."')><i class='fa fa-trash'></i>  </button></td>";
+                      echo "<td><button type='button' class='btn btn-info' onclick=mandarId('".base64_encode($value->getIdCargo())."')><i class='fa fa-pencil'></i></button> <button type='button' class='btn btn-danger' onclick=showConfirmMessage('".$value->getIdCargo()."')><i class='fa fa-trash'></i>  </button></td>";
                       echo "</tr>";
                       $contador++;
                     }
@@ -93,7 +93,7 @@
                 <!-- Welcome -->
                 <div class="col-lg-12">
                     <div class="alert alert-info">
-                      <center>  <i class="fa fa-folder-open"></i><b> Copyright  © </b>2021 <b>&nbsp;FARMACIA LA BENDICION </b>
+                      <center>  <i class="fa fa-folder-open"></i><b> Copyright  © </b>2021 <b>&nbsp;FARMACIA LA BENDICIÓN </b>
         <b>&nbsp; </b> Reservados todos los derechos.</center>
                     </div>
                 </div>
@@ -149,8 +149,8 @@
 
     if ($bandera=="delete") {
         # code...
-        require_once "../DAO/DAOCategoria.php";
-        $daoE=new DAOCategoria();
+        require_once "../DAO/DAOCargo.php";
+        $daoE=new DAOCargo();
         if ($daoE->eliminar($baccion)==1) {
            echo "<script type='text/javascript'>"; 
          echo " Swal.fire({

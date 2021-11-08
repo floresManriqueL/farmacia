@@ -1,14 +1,17 @@
   function limpiar(){
         $('#nombre').val('');
-        $('#codigo').val('');
-        location.href="fm_categoria.php";
+        $('#apellido').val('');
+        $('#telefono').val('');
+        $('#direccion').val('');
+        location.href="fm_cliente.php";
     }
 
 
 
 
     function validacion1() {
-        if (document.getElementById('nombre').value == "" || document.getElementById('codigo').value=="") {
+        if (document.getElementById('nombre').value == "" || document.getElementById('apellido').value==""
+          || document.getElementById('telefono').value==""|| document.getElementById('direccion').value=="") {
             //alert("Complete los campos antes de guardar");
             if(document.getElementById('nombre').value == ""){
               //llamra
@@ -41,7 +44,7 @@
         }
     }
 
-    function generar(){
+   /* function generar(){
 
 
       var cadena=document.getElementById('nombre').value;
@@ -71,7 +74,8 @@
         codigo.style.cssText = 'border-color: rgb(0, 0, 0);';
       }
       console.log(ca);
-    }
+   }*/ 
+
 
 
     function mostrarMensaje(titulo, texto, tipo, pagina,tiempo) {
@@ -96,8 +100,49 @@ function men() {
 });
 }
 function redi(){
-     location.href="tb_listacategoria.php";
+     location.href="tb_listacliente.php";
 }
+$(document).ready(function(){
+
+ $("#apellido").keyup(function(e){
+
+  var apellidos = document.getElementById('apellido');
+      var apee = document.getElementById('ape');
+      apee.style.cssText = 'color: rgb(0, 0, 0);';
+      apellidos.style.cssText = 'border-color: rgb(0, 0, 0);';
+
+
+});
+});
+
+
+$(document).ready(function(){
+
+ $("#telefono").keyup(function(e){
+
+  var apellidos = document.getElementById('telefono');
+      var apee = document.getElementById('tel');
+      apee.style.cssText = 'color: rgb(0, 0, 0);';
+      apellidos.style.cssText = 'border-color: rgb(0, 0, 0);';
+
+
+});
+});
+
+
+$(document).ready(function(){
+
+ $("#direccion").keyup(function(e){
+
+  var apellidos = document.getElementById('direccion');
+      var apee = document.getElementById('dirr');
+      apee.style.cssText = 'color: rgb(0, 0, 0);';
+      apellidos.style.cssText = 'border-color: rgb(0, 0, 0);';
+
+
+});
+});
+
 
   $(document).ready(function(){
  
@@ -111,7 +156,7 @@ var espacion_blanco = $('#nombre').val();
               console.log(nn);
 
 
-var codig= document.getElementById('codigo');
+//var codig= document.getElementById('codigo');
   var nombre = document.getElementById('nombre');
       var nom = document.getElementById('nom');
       nom.style.cssText = 'color: rgb(0, 0, 0);';
@@ -142,7 +187,7 @@ console.log(efectivo);
              $('#bgene').prop('disabled', true);
            // $('#bgene').removeAttr('disabled');
 
-            document.getElementById('codigo').value='';
+           // document.getElementById('codigo').value='';
           }else{
              $('#bgene').prop('disabled', false);
            // $('#bgene').attr('disabled','disabled');
@@ -213,11 +258,11 @@ console.log(efectivo);
             // Definimos las mascaras para cada input
             $("#dui").mask("99999999-9");
             $("#nit").mask("9999-999999-999-3");
-            $("#telefono").mask("9999-9999");
+            $("#telefon").mask("9999-9999");
     });
 
      function mandarId(id) {
-        location.href = "fm_categoria.php?id=" + id;
+        location.href = "fm_cliente.php?id=" + id;
     }
 
     function showConfirmMessage(id) {
@@ -240,7 +285,7 @@ console.log(efectivo);
 });
    } 
    function redi(){
-     location.href="tb_listacategoria.php";
+     location.href="tb_listacliente.php";
 }
 
 
@@ -248,12 +293,17 @@ console.log(efectivo);
      
 var str = "";
       var te = "";
-          var espacion_blanco = $('#nombre').val();
-          
-              let n= espacion_blanco.trim();
+          var espacion_blanco_n = $('#nombre').val();
+          var espacion_blanco_a = $('#apellido').val();
+          var espacion_blanco_t = $('#telefono').val();
+              var espacion_blanco_d = $('#direccion').val();
+              let n= espacion_blanco_n.trim();
+               let ap= espacion_blanco_a.trim();
+                let tele= espacion_blanco_t.trim();
+                   let dir= espacion_blanco_d.trim();
              
 
-        if (n =="" || document.getElementById('codigo').value=="") {
+        if (n =="" || ap =="" || tele =="" || dir =="" ) {
 
   if(n == ""){
               //llamra
@@ -263,15 +313,32 @@ var str = "";
               var nom = document.getElementById('nom');
               nom.style.cssText = 'color: rgb(255, 0, 0);';
               nombre.style.cssText = 'border-color: rgb(255, 0, 0);';
-            }else if(document.getElementById('codigo').value==""){
+            }else if(ap == ""){
                //llamra
-             str = "codigo";
-             te = "Complete el campo CODIGO antes de guardar";
-             var codigo = document.getElementById('codigo');
-             var cod = document.getElementById('cod');
-             cod.style.cssText = 'color: rgb(255, 0, 0); height: 30px;';
-             codigo.style.cssText = 'border-color: rgb(255, 0, 0);';
+             str = "apellido";
+             te = "Complete el campo APELLIDO antes de guardar";
+             var apellido = document.getElementById('apellido');
+             var ape = document.getElementById('ape');
+             ape.style.cssText = 'color: rgb(255, 0, 0); height: 30px;';
+             apellido.style.cssText = 'border-color: rgb(255, 0, 0);';
+            }else if(tele == ""){
+               //llamra
+             str = "telefono";
+             te = "Complete el campo TELEFONO antes de guardar";
+             var telefono = document.getElementById('telefono');
+             var tel = document.getElementById('tel');
+             tel.style.cssText = 'color: rgb(255, 0, 0); height: 30px;';
+             telefono.style.cssText = 'border-color: rgb(255, 0, 0);';
+            }else if(dir == ""){
+               //llamra
+             str = "direccion";
+             te = "Complete el campo DIRECCION antes de guardar";
+             var direccion = document.getElementById('direccion');
+             var ddd = document.getElementById('dirr');
+             dirr.style.cssText = 'color: rgb(255, 0, 0); height: 30px;';
+             direccion.style.cssText = 'border-color: rgb(255, 0, 0);';
             }
+
 
 
 
@@ -285,10 +352,10 @@ var str = "";
             }
 }else{
             if (document.getElementById('baccion').value!="") {
-                $('#codigo').removeAttr('disabled');
+                //$('#codigo').removeAttr('disabled');
                 document.getElementById('bandera').value="edicion";
             } else {
-                $('#codigo').removeAttr('disabled');
+               // $('#codigo').removeAttr('disabled');
                 document.getElementById('bandera').value = "add";                        
             }
             document.simi.submit();
@@ -304,8 +371,59 @@ var str = "";
          
             });
 
-     //  $(document).ready(function(){
-      //  $.mask.definitions['~']='[a,b,c,d]';
-// $('#nombre').mask('^[a-zA-Z0-9_.-]*$');
+      $(document).ready(function(){
+      $.mask.definitions['~']='[2,6,7]';
+ $('#telefono').mask('~999-9999');
  
-//});
+});
+
+
+
+      $(document).on("blur",".validar_campos_unicos",function(e){
+    e.preventDefault();
+    if ($(this).val()=="") {
+      return;
+    }
+    if (document.getElementById('baccion').value!="") {
+        
+
+
+
+        
+    }else{
+      console.log("validar_campo",$(this).data('quien_es'));
+      mostrar_mensaje("Espere","Validando "+$(this).data('quien_es'));
+      var datos = {"validar_campos":"si_por_campo","campo":$(this).val(),"tipo":$(this).data('quien_es')};
+      var incampo = $(this).data('quien_es');
+      console.log("datos: ",datos);
+      $.ajax({
+            dataType: "json",
+            method: "POST",
+            url:'json_valida_cliente.php',
+            data : datos,
+        }).done(function(json) {
+          console.log("retorno de validacion",json);
+          if (json[0]=="Error" && incampo=="telefono") {
+              var inputd = document.getElementById('telefono');
+              var labeld = document.getElementById('tel');
+              labeld.style.cssText = 'color: rgb(255, 0, 0);';
+              inputd.style.cssText = 'border-color: rgb(255, 0, 0);'
+              $('#telefono').val('');
+          }
+
+          console.log("El envio: ",json);
+        }).always(function(){
+          Swal.close();
+        });
+    }
+  });
+
+function mostrar_mensaje(titulo,texto=""){
+  Swal.fire({
+        title: 'SyS-Farmacia',
+        icon: 'warning',
+        text: 'Validando',
+        showConfirmButton: false,
+        timer: 3000
+      });
+}

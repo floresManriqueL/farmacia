@@ -16,7 +16,7 @@
     <link href="../assets/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
 
      <link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css"/>
-     <script src="js/js_categoria.js"></script>
+     <script src="js/js_cliente.js"></script>
       <script language="javascript">
 
   
@@ -37,7 +37,7 @@
             <div class="row">
                  <!--  page header -->
                 <div class="col-lg-12">
-                    <h1 class="page-header"><i class="fa fa-th" aria-hidden="true"></i> Lista de Categorias</h1>
+                    <h1 class="page-header"><i class="fa fa-th" aria-hidden="true"></i> LISTA DE CLIENTES</h1>
                 </div>
                  <!-- end  page header -->
             </div>
@@ -46,7 +46,7 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div  style="background-color: rgb(41, 60, 72);" class="panel-heading">
-                             <h5 style="color: rgb(255, 255, 255);"><i class="fa fa-table" aria-hidden="true"></i> Gestion de Categorias</h5>
+                             <h5 style="color: rgb(255, 255, 255);"><i class="fa fa-table" aria-hidden="true"></i> Gestión De Clientes</h5>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -57,16 +57,18 @@
                                     <thead>
                             <tr>
                                  <th>Corr</th>
-                                <th>Codigo</th>
-                                 <th>Nombre</th>
+                                <th>Nombre</th>
+                                 <th>Apellido</th>
+                                  <th>Teléfono</th>
+                                   <th>Dirección</th>
                                 <th>Acciones</th>
 
                             </tr>
                         </thead>
                         <tbody>
                              <?php
-                    include "../DAO/DAOCategoria.php";
-                    $daoE=new DAOCategoria();
+                    include "../DAO/DAOCliente.php";
+                    $daoE=new DAOCliente();
                     $fila=$daoE->consultaAll();
                     $contador=1;
 
@@ -74,9 +76,11 @@
                       # code...
                       echo "<tr>";
                       echo "<td>".$contador."</td>";
-                      echo "<td>".$value->getCodigo()."</td>";
                       echo "<td>".$value->getNombre()."</td>";
-                      echo "<td><button type='button' class='btn btn-info' onclick=mandarId('".base64_encode($value->getIdCategoria())."')><i class='fa fa-pencil'></i></button> <button type='button' class='btn btn-danger' onclick=showConfirmMessage('".$value->getIdCategoria()."')><i class='fa fa-trash'></i>  </button></td>";
+                      echo "<td>".$value->getApellido()."</td>";
+                       echo "<td>".$value->getTelefono()."</td>";
+                        echo "<td>".$value->getDireccion()."</td>";
+                      echo "<td><button type='button' class='btn btn-info' onclick=mandarId('".base64_encode($value->getIdCliente())."')><i class='fa fa-pencil'></i></button> <button type='button' class='btn btn-danger' onclick=showConfirmMessage('".$value->getIdCliente()."')><i class='fa fa-trash'></i>  </button></td>";
                       echo "</tr>";
                       $contador++;
                     }
@@ -149,8 +153,8 @@
 
     if ($bandera=="delete") {
         # code...
-        require_once "../DAO/DAOCategoria.php";
-        $daoE=new DAOCategoria();
+        require_once "../DAO/DAOCliente.php";
+        $daoE=new DAOCliente();
         if ($daoE->eliminar($baccion)==1) {
            echo "<script type='text/javascript'>"; 
          echo " Swal.fire({

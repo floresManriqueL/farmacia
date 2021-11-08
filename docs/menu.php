@@ -55,7 +55,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="iniciomenu.php">
-                   <center><h1 style="color: rgb(255,255,255); font-weight: 900;">FARMACIA LA BENDICION</h1></center>
+                   <center><h1 style="color: rgb(255,255,255); font-weight: 900;">FARMACIA LA BENDICIÓN</h1></center>
                 </a>
             </div>
             <!-- end navbar-header -->
@@ -410,14 +410,29 @@
                         <a href="#"><i class="app-menu__icon fa fa-users"></i> Gestionar Cliente<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#"><i class="icon fa fa-circle-o"></i> Agregar Cliente</a>
+                                <a href="fm_cliente.php"><i class="icon fa fa-circle-o"></i> Agregar Cliente</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon fa fa-circle-o"></i> Listar Cliente</a>
+                                <a href="tb_listacliente.php"><i class="icon fa fa-circle-o"></i> Listar Cliente</a>
                             </li>
                         </ul>
                         <!-- second-level-items -->
                     </li>
+
+
+    <li>
+                        <a href="#"><i class="app-menu__icon fa fa-users"></i> Gestionar Cargo<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="fm_cargo.php"><i class="icon fa fa-circle-o"></i> Agregar Cargo</a>
+                            </li>
+                            <li>
+                                <a href="tb_listacargo.php"><i class="icon fa fa-circle-o"></i> Listar Cargos</a>
+                            </li>
+                        </ul>
+                        <!-- second-level-items -->
+                    </li>
+
                     <li>
                         <a href="#"><i class="fa fa-male"></i> Gestionar Empleados<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
