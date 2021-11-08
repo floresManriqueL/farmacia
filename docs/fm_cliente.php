@@ -76,7 +76,7 @@
                                       <div class="col-md-8">
                                             <label id="nom"><i class="fa fa-minus-square" aria-hidden="true"></i> Nombre</label>
 
-                                            <input   class="form-control"
+                                            <input minlength="0" maxlength="40"  class="form-control"
                                             required   data-parsley-error-message="Campo requerido" autocomplete="off" type="text" id="nombre" name="nombre" value="<?php if(isset($objP)) echo $objP->getNombre(); ?>"  placeholder="Nombre" onkeypress="return soloLetras(event)">
                                         </div>
                                         
@@ -86,7 +86,7 @@
     <br>
                                             <label id="ape"><i class="fa fa-minus-square" aria-hidden="true"></i> Apellido</label>
 
-                                            <input   class="form-control"
+                                            <input minlength="0" maxlength="40"   class="form-control"
                                             required   data-parsley-error-message="Campo requerido" autocomplete="off" type="text" id="apellido" name="apellido" value="<?php if(isset($objP)) echo $objP->getApellido(); ?>"  placeholder="Apellido" onkeypress="return soloLetras(event)">
                                         </div>
                                      

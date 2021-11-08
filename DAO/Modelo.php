@@ -55,8 +55,8 @@
 
 	define('DATABASE','farmacia');
 	define('HOSTNAME','localhost');
-	define('USERNAME','denisleiva');
-	define('PASSWORD','camionzapato');
+	define('USERNAME','root');
+	define('PASSWORD','');
 
 class Conexion
 {

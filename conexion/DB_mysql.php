@@ -14,8 +14,8 @@ class DB_mysql{
 function __construct(){
     $this->BaseDatos="farmacia";
     $this->Servidor="localhost";
-    $this->Usuario="denisleiva";
-    $this->Clave="camionzapato";
+    $this->Usuario="root";
+    $this->Clave="";
     $this->conectar($this->Servidor,$this->Usuario,$this->Clave,$this->BaseDatos);
 }
 

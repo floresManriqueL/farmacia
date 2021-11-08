@@ -81,7 +81,7 @@
                                       <div class="col-md-8">
                                             <label id="nom"><i class="fa fa-minus-square" aria-hidden="true"></i> Nombre</label>
 
-                                            <input   class="form-control"
+                                            <input minlength="0" maxlength="40"  class="form-control"
                                             required   data-parsley-error-message="Campo requerido" autocomplete="off" type="text" id="nombre" name="nombre" value="<?php if(isset($objP)) echo $objP->getNombre(); ?>"  placeholder="Nombre Categoria" onkeypress="return soloLetras(event)">
                                         </div>
                             </div>

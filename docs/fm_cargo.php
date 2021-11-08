@@ -20,7 +20,7 @@
     <title>FARMACIA LA BENDICIÓN</title>
     <!-- Core CSS - Include with every page -->
  <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo2.png">
-    
+
     <link href="../assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -81,7 +81,7 @@
                                       <div class="col-md-8">
                                             <label id="nom"><i class="fa fa-minus-square" aria-hidden="true"></i> Nombre</label>
 
-                                            <input   class="form-control"
+                                            <input  minlength="0" maxlength="40"  class="form-control"
                                             required   data-parsley-error-message="Campo requerido" autocomplete="off" type="text" id="nombre" name="nombre" value="<?php if(isset($objP)) echo $objP->getNombre(); ?>"  placeholder="Nombre Completo" onkeypress="return soloLetras(event)">
                                         </div>
                             </div>
